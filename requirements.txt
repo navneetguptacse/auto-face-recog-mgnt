@@ -1,0 +1,4 @@
+firebase-admin
+streamlit
+opencv-python-headless
+face_recognition
