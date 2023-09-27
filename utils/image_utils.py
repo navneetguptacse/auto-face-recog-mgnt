@@ -15,14 +15,10 @@ def load_registered_faces():
 
 # Recognize a face in a captured image
 def recognize_face(frame, registered_faces):
-    # Find faces in the captured image
     face_locations = face_recognition.face_locations(frame)
     face_encodings = face_recognition.face_encodings(frame, face_locations)
-
-    # Initialize the recognized user name
     recognized_user_name = None
 
-    # If there are no faces in the image, return None
     if not face_encodings:
         return None
 
