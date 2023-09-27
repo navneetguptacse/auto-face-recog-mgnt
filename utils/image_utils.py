@@ -9,16 +9,24 @@ def load_registered_faces():
             user_name = file.split(".")[0]
             image_path = f"data/registered_faces/{file}"
             image = face_recognition.load_image_file(image_path)
-            face_encoding = face_recognition.face_encodings(image)[0]
-            registered_faces.append((user_name, face_encoding))
+            face_encodings = face_recognition.face_encodings(image)
+
+            # Check if any face encodings were detected
+            if face_encodings:
+                face_encoding = face_encodings[0]
+                registered_faces.append((user_name, face_encoding))
+
     return registered_faces
 
 # Recognize a face in a captured image
 def recognize_face(frame, registered_faces):
+    # Find faces in the captured image
     face_locations = face_recognition.face_locations(frame)
     face_encodings = face_recognition.face_encodings(frame, face_locations)
+    # Initialize the recognized user name
     recognized_user_name = None
 
+    # If there are no faces in the image, return None
     if not face_encodings:
         return None
 

@@ -1,7 +1,7 @@
-import firebase_admin
-from firebase_admin import credentials, db, storage
-from datetime import datetime
 import csv
+import firebase_admin
+from datetime import datetime
+from firebase_admin import credentials, db, storage
 
 _initialized = False
 
@@ -41,16 +41,20 @@ def download_attendance_csv():
     attendance_data = database.child('attendance').get()
 
     if attendance_data:
+        # Create a list to store attendance records
         attendance_records = []
 
         for user_id, timestamp in attendance_data.items():
             attendance_records.append({'User ID': user_id, 'Timestamp': timestamp})
+
+        # Define the CSV file path
         csv_file_path = 'data/attendance.csv'
 
         # Write the attendance data to the CSV file
         with open(csv_file_path, mode='w', newline='') as csv_file:
             fieldnames = ['User ID', 'Timestamp']
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+
             writer.writeheader()
             writer.writerows(attendance_records)
 
