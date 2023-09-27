@@ -8,7 +8,6 @@ Make sure you have the required Python packages installed by running the followi
 
 ```
 pip install -r requirements.txt
-
 ```
 ## Usage
 
