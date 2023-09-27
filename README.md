@@ -34,7 +34,7 @@ pip install -r requirements.txt
 Before you can run this project, ensure you have the following software and packages installed:
 
 - [`Python`](https://www.python.org/downloads/): You will need Python 3.7.6 or later version to execute the code.
-- [`Firebase` Admin SDK](https://pypi.org/project/firebase-admin/): Required for Firebase integration.
+- [`Firebase Admin SDK`](https://pypi.org/project/firebase-admin/): Required for Firebase integration.
 - [`Streamlit`](https://pypi.org/project/streamlit/): Used for creating the web-based interface.
 - [`OpenCV Python`](https://pypi.org/project/opencv-python-headless/): Necessary for image and video processing.
 - [`Face Recognition`](https://pypi.org/project/face-recognition/): Used for face recognition tasks.
