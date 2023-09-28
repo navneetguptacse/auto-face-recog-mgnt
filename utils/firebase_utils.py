@@ -5,7 +5,6 @@ from firebase_admin import credentials, db, storage
 
 _initialized = False
 
-# Initialize Firebase
 def initialize_firebase():
     global _initialized
     if not _initialized:
@@ -34,30 +33,21 @@ def get_last_attendance_timestamp(user_id):
     timestamp = database.child('attendance').child(user_id).get()
     return timestamp
 
-
 # Fetch attendance data and generate a CSV file
 def download_attendance_csv():
     database = db.reference('/')
     attendance_data = database.child('attendance').get()
 
     if attendance_data:
-        # Create a list to store attendance records
         attendance_records = []
-
         for user_id, timestamp in attendance_data.items():
             attendance_records.append({'User ID': user_id, 'Timestamp': timestamp})
-
-        # Define the CSV file path
         csv_file_path = 'data/attendance.csv'
-
-        # Write the attendance data to the CSV file
         with open(csv_file_path, mode='w', newline='') as csv_file:
             fieldnames = ['User ID', 'Timestamp']
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-
             writer.writeheader()
             writer.writerows(attendance_records)
-
         return csv_file_path
     else:
         return None

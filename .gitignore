@@ -1,3 +1,4 @@
 firebase/serviceAccountKey.json
 utils/__pycache__
 venv
+.vscode
